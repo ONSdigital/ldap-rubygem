@@ -20,11 +20,11 @@ base = 'dc=example,dc=com' # LDAP tree base
 groups = { admins: 'admins', users: 'users' }
 
 ldap_connection = LDAPConnection.new(host, port, base, groups, logger)
-user_entry      = ldap_connection.authenticate('john', 'password')
+user_entry      = ldap_connection.authenticate('johntopley', 'password')
 
 user_entry.user_id      #=> 'johntopley'
 user_entry.display_name #=> 'John Topley'
-user_entry.token        # Two factor authentiation token, stored in LDAP's employeeNumber number for expediency
+user_entry.token        # 2FA token, stored in LDAP's employeeNumber number for expediency
 user_entry.groups       #=> ['admins', 'users']
 ```
 
