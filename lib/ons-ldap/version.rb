@@ -1,7 +1,7 @@
 module ONSLDAP
   module Version
-    MAJOR = 8
-    MINOR = 13
+    MAJOR = 1
+    MINOR = 0
     TINY  = 0
   end
   VERSION = [Version::MAJOR, Version::MINOR, Version::TINY].compact * '.'
