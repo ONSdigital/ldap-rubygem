@@ -24,7 +24,7 @@ user_entry      = ldap_connection.authenticate('johntopley', 'password')
 
 user_entry.user_id      #=> 'johntopley'
 user_entry.display_name #=> 'John Topley'
-user_entry.token        # 2FA token, stored in LDAP's employeeNumber number for expediency
+user_entry.token        # 2FA token, stored in LDAP's employeeNumber field for expediency
 user_entry.groups       #=> ['admins', 'users']
 ```
 
