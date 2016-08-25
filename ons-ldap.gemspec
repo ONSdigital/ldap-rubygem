@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     =  ONSLDAP::VERSION
   s.date        =  Date.today.to_s
   s.summary     =  'LDAP connection class'
-  s.description =  'Simple class for authenticating against an LDAP directory'
+  s.description =  'Simple class for authenticating against an LDAP directory.'
   s.authors     =  ['John Topley','Philip Sharland']
   s.email       =  ['john.topley@ons.gov.uk','philip.sharland@ons.gov.uk']
   s.files       =  ['README.md']
