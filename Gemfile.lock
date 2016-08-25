@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    ons-ldap (8.13.0)
+      net-ldap (~> 0, >= 0.11)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    net-ldap (0.15.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ons-ldap!
+
+BUNDLED WITH
+   1.12.5
