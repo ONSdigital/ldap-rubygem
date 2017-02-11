@@ -11,14 +11,16 @@ class LDAPConnection
     attr_accessor :base
     attr_accessor :groups
     attr_accessor :logger
+    attr_accessor :encrypted
   end
 
-  def initialize(host, port, base, groups, logger)
+  def initialize(host, port, base, groups, logger, encrypted = true)
     self.class.host = host
     self.class.port = port.to_i
     self.class.base = base
     self.class.groups = groups
     self.class.logger = logger
+    self.class.encrypted = encrypted
   end
 
   def authenticate(username, password)
@@ -27,7 +29,8 @@ class LDAPConnection
     # Have to use the username DN format below for the bind operation to succeed.
     auth = { method: :simple, username: "uid=#{username},ou=Users,#{self.class.base}", password: password }
 
-    Net::LDAP.open(host: self.class.host, port: self.class.port, base: self.class.base, auth: auth) do |ldap|
+    Net::LDAP.open(host: self.class.host, port: self.class.port, self.class.base, auth: auth) do |ldap|
+      ldap.encryption = :simple_tls if self.class.encrypted?
       unless ldap.bind
         result = ldap.get_operation_result
         self.class.logger.error "LDAP authentication failed for '#{username}': #{result.message} (#{result.code})"
