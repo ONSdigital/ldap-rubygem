@@ -29,7 +29,7 @@ class LDAPConnection
     # Have to use the username DN format below for the bind operation to succeed.
     auth = { method: :simple, username: "uid=#{username},ou=Users,#{self.class.base}", password: password }
 
-    Net::LDAP.open(host: self.class.host, port: self.class.port, self.class.base, auth: auth) do |ldap|
+    Net::LDAP.open(host: self.class.host, port: self.class.port, base: self.class.base, auth: auth) do |ldap|
       ldap.encryption = :simple_tls if self.class.encrypted?
       unless ldap.bind
         result = ldap.get_operation_result
