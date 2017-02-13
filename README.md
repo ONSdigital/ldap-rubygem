@@ -26,9 +26,6 @@ user_entry.user_id      #=> 'johntopley'
 user_entry.display_name #=> 'John Topley'
 user_entry.token        # 2FA token, stored in LDAP's employeeNumber field for expediency
 user_entry.groups       #=> ['admins', 'users']
-
-# Pass false as the last initializer argument to use a non-TLS connection:
-ldap_connection = LDAPConnection.new(host, port, base, groups, logger, false)
 ```
 
 ## Testing
